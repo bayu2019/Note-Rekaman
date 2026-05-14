@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold:        #C9A84C;
+    --gold:         #C9A84C;
     --gold-light:  #E8D08A;
     --gold-dim:    #7A5E25;
     --gold-pale:   #F5EDCF;
@@ -39,7 +39,6 @@
     overflow: hidden;
   }
 
-  /* ── LAYERED PRESIDENTIAL BACKGROUND ── */
   body::before {
     content:'';
     position:fixed; inset:0;
@@ -50,7 +49,6 @@
     pointer-events:none; z-index:0;
   }
 
-  /* Fine diagonal stripe texture */
   body::after {
     content:'';
     position:fixed; inset:0;
@@ -74,7 +72,6 @@
             env(safe-area-inset-bottom,0) env(safe-area-inset-left,0);
   }
 
-  /* ── TOP GOLD BAND ── */
   .gold-band {
     height:3px;
     background: linear-gradient(90deg,
@@ -88,7 +85,6 @@
     flex-shrink:0;
   }
 
-  /* ── HEADER ── */
   .header {
     display:flex; align-items:center; justify-content:space-between;
     padding:13px 24px 12px;
@@ -100,7 +96,6 @@
     position:relative;
   }
 
-  /* Subtle center ornament line */
   .header::after {
     content:'';
     position:absolute; bottom:0; left:50%; transform:translateX(-50%);
@@ -130,7 +125,6 @@
     display:flex; align-items:center; gap:8px; flex-shrink:0;
   }
 
-  /* ── MIC INDICATOR ── */
   .mic-indicator {
     display:flex; align-items:center; gap:7px;
     padding:5px 11px 5px 9px;
@@ -154,7 +148,6 @@
     50%     { opacity:0.4; transform:scale(0.65); }
   }
 
-  /* ── BUTTONS ── */
   .btn {
     display:inline-flex; align-items:center; gap:6px;
     padding:8px 15px; border-radius:7px;
@@ -198,7 +191,6 @@
 
   .hidden { display:none !important; }
 
-  /* ── META BAR ── */
   .meta-bar {
     display:flex; align-items:center; gap:14px;
     padding:7px 24px;
@@ -225,10 +217,8 @@
 
   .meta-sep { width:1px; height:13px; background:var(--navy-border); flex-shrink:0; }
 
-  /* ── MAIN CONTENT ── */
   .main-content { display:flex; flex:1; overflow:hidden; }
 
-  /* ── EDITOR PANEL ── */
   .editor-panel {
     flex:1; display:flex; flex-direction:column;
     padding:16px 18px; overflow:hidden; min-width:0;
@@ -275,7 +265,6 @@
     color:var(--text-muted); font-style:italic; font-size:14px; line-height:1.8;
   }
 
-  /* ── LIVE SIDEBAR ── */
   .live-panel {
     width:268px; flex-shrink:0;
     display:flex; flex-direction:column;
@@ -350,7 +339,6 @@
   }
   .btn-clear:hover { border-color:var(--accent-red); color:var(--accent-red); }
 
-  /* ── FOOTER ── */
   .app-footer {
     display:flex; align-items:center; justify-content:center; gap:10px;
     padding:6px 24px; flex-shrink:0;
@@ -370,7 +358,6 @@
     font-size:10px; color:var(--gold-dim); opacity:0.5;
   }
 
-  /* ── BOTTOM BAR (mobile) ── */
   .bottom-bar {
     display:none;
     padding:9px 14px;
@@ -393,7 +380,6 @@
     overflow:hidden; word-break:break-word;
   }
 
-  /* ── TOAST ── */
   .toast {
     position:fixed; bottom:78px; left:50%;
     transform:translateX(-50%) translateY(18px);
@@ -409,7 +395,6 @@
   }
   .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
-  /* ── WAVEFORM ── */
   .waveform { display:flex; align-items:center; gap:2px; height:16px; margin-right:3px; }
   .wave-bar { width:2px; background:var(--accent-red); border-radius:1px; height:3px; transition:height 0.1s; }
   .waveform.active .wave-bar:nth-child(1) { animation:wave 0.9s ease-in-out infinite 0s; }
@@ -419,7 +404,6 @@
   .waveform.active .wave-bar:nth-child(5) { animation:wave 0.9s ease-in-out infinite 0s; }
   @keyframes wave { 0%,100%{ height:3px; } 50%{ height:13px; } }
 
-  /* ── CORNER ORNAMENTS (layar besar) ── */
   .corner-ornament {
     position:fixed; width:48px; height:48px;
     pointer-events:none; z-index:2; opacity:0.25;
@@ -430,7 +414,6 @@
   .co-bl { bottom:0; left:0; transform:scaleY(-1); }
   .co-br { bottom:0; right:0; transform:scale(-1,-1); }
 
-  /* ── RESPONSIVE ── */
   @media (max-width:768px) {
     .live-panel { display:none; }
     .bottom-bar { display:flex; }
@@ -447,16 +430,10 @@
     .btn span { display:none; }
     .btn { padding:8px 10px; }
   }
-
-  @media (min-width:1400px) {
-    .app-wrapper { max-width:1400px; }
-    #mainEditor { font-size:16px; line-height:2.1; }
-  }
 </style>
 </head>
 <body>
 
-<!-- Corner ornaments for big screen presence -->
 <div class="corner-ornament co-tl">
   <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M2 2 L2 22 M2 2 L22 2" stroke="#C9A84C" stroke-width="1.5"/>
@@ -485,11 +462,8 @@
 <div id="toast" class="toast"></div>
 
 <div class="app-wrapper">
-
-  <!-- TOP GOLD BAND -->
   <div class="gold-band"></div>
 
-  <!-- HEADER -->
   <div class="header">
     <div class="header-left">
       <div class="header-brand">Bayu Permana</div>
@@ -519,7 +493,6 @@
     </div>
   </div>
 
-  <!-- META BAR -->
   <div class="meta-bar">
     <div class="meta-item">
       <span class="meta-label">Tanggal</span>
@@ -553,17 +526,13 @@
     </div>
   </div>
 
-  <!-- MAIN CONTENT -->
   <div class="main-content">
-
-    <!-- EDITOR -->
     <div class="editor-panel">
       <div class="panel-label">Editor Notulensi — Kursor Aman</div>
       <textarea id="mainEditor"
         placeholder="Notulensi akan muncul di sini secara otomatis saat Anda berbicara.&#10;Anda tetap bisa mengedit kapan saja — kursor tidak akan berpindah saat transkripsi aktif..."></textarea>
     </div>
 
-    <!-- LIVE SIDEBAR -->
     <div class="live-panel">
       <div class="panel-label">Suara Langsung</div>
       <div id="liveMonitor">
@@ -578,36 +547,30 @@
       </div>
       <button class="btn-clear" onclick="clearAll()">🗑 Bersihkan Semua</button>
     </div>
-
   </div>
 
-  <!-- FOOTER -->
   <div class="app-footer">
     <span class="footer-ornament">✦</span>
     <span class="footer-text">© Bayu Permana</span>
     <span class="footer-ornament">✦</span>
   </div>
 
-  <!-- BOTTOM BAR (mobile) -->
   <div class="bottom-bar">
     <div class="bottom-live" id="bottomLive">
       <span style="color:var(--text-muted);font-style:italic;font-size:11px;">Suara akan muncul di sini...</span>
     </div>
     <button class="btn btn-icon" onclick="clearAll()" title="Hapus Semua">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="3 6 5 6 21 6"/>
-        <path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/>
+        <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/>
       </svg>
     </button>
   </div>
-
-</div><!-- /app-wrapper -->
+</div>
 
 <script>
 (function(){
 'use strict';
 
-// ── STATE ──
 const state = {
   isRecording: false,
   filterEnabled: true,
@@ -616,9 +579,9 @@ const state = {
   recognition: null,
   restartTimeout: null,
   wakeLock: null,
+  lastFinalText: '', // Anti-duplicate buffer
 };
 
-// ── DOM ──
 const els = {
   editor:       document.getElementById('mainEditor'),
   liveMonitor:  document.getElementById('liveMonitor'),
@@ -638,7 +601,6 @@ const els = {
   toast:        document.getElementById('toast'),
 };
 
-// ── DATE / TIME ──
 function updateDateTime() {
   const now = new Date();
   els.metaDate.textContent = now.toLocaleDateString('id-ID', {day:'2-digit',month:'short',year:'numeric'});
@@ -647,11 +609,9 @@ function updateDateTime() {
 updateDateTime();
 setInterval(updateDateTime, 1000);
 
-// ── LOAD SAVED ──
 const saved = localStorage.getItem('bp_notulensi_v3');
 if (saved) { els.editor.value = saved; updateCounts(); }
 
-// ── COUNTS ──
 function updateCounts() {
   const text = els.editor.value;
   const words = text.trim() ? text.trim().split(/\s+/).length : 0;
@@ -663,7 +623,6 @@ els.editor.addEventListener('input', () => {
   updateCounts();
 });
 
-// ── TIMER ──
 function startTimer() {
   state.sessionStart = Date.now();
   state.timerInterval = setInterval(() => {
@@ -675,32 +634,16 @@ function startTimer() {
 }
 function stopTimer() { clearInterval(state.timerInterval); }
 
-// ── WAKE LOCK (keep screen active) ──
 async function acquireWakeLock() {
   if (!('wakeLock' in navigator)) return;
   try {
     state.wakeLock = await navigator.wakeLock.request('screen');
-    state.wakeLock.addEventListener('release', () => { state.wakeLock = null; });
   } catch(e) {}
 }
-async function releaseWakeLock() {
-  if (state.wakeLock) { try { await state.wakeLock.release(); } catch(e) {} state.wakeLock = null; }
+function releaseWakeLock() {
+  if (state.wakeLock) { state.wakeLock.release().then(()=>state.wakeLock=null); }
 }
 
-// Re-acquire wake lock when tab becomes visible again (e.g. after phone screen wakes)
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'visible' && state.isRecording) {
-    acquireWakeLock();
-    // Ensure recognition is still running
-    setTimeout(() => {
-      if (state.isRecording) {
-        try { if (state.recognition) state.recognition.start(); } catch(e) {}
-      }
-    }, 400);
-  }
-});
-
-// ── FILLER / REPEAT FILTER ──
 const FILLER = new Set(['ee','eee','eeee','eh','ehh','mm','mmm','hmm','hmmm','ah','uhh','uh','em','um','umm','anu','apa','gitu']);
 
 function filterText(raw) {
@@ -709,21 +652,15 @@ function filterText(raw) {
   let out = [], prev = '';
   for (let i = 0; i < words.length; i++) {
     const w = words[i].toLowerCase().replace(/[.,!?]/g,'');
-    if (FILLER.has(w)) continue;
+    if (!w || FILLER.has(w)) continue;
     if (w === prev && w.length > 2) continue;
-    if (out.length >= 2) {
-      const pp = out[out.length-2].toLowerCase().replace(/[.,!?]/g,'');
-      if (w === pp && w === prev) continue;
-    }
     out.push(words[i]);
     prev = w;
   }
   return out.join(' ').trim();
 }
 
-// ── SPEECH RECOGNITION ──
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-if (!SR) showToast('⚠ Gunakan Chrome/Edge untuk fitur suara');
 
 function createRecognition() {
   if (!SR) return null;
@@ -731,81 +668,86 @@ function createRecognition() {
   r.lang = 'id-ID';
   r.continuous = true;
   r.interimResults = true;
-  r.maxAlternatives = 1;
 
   r.onresult = (event) => {
-    let interim = '', finalText = '';
+    let interim = '';
+    let currentFinal = '';
+
     for (let i = event.resultIndex; i < event.results.length; i++) {
-      const t = event.results[i][0].transcript;
-      if (event.results[i].isFinal) finalText += t + ' ';
-      else interim += t;
+      const transcript = event.results[i][0].transcript;
+      if (event.results[i].isFinal) {
+        currentFinal += transcript;
+      } else {
+        interim += transcript;
+      }
     }
-    if (interim || finalText) {
-      const disp = filterText(interim || finalText);
-      els.liveMonitor.innerHTML =
-        `<span style="color:var(--text-secondary)">${filterText(finalText)}</span>` +
+
+    // Update UI Live Monitor
+    if (interim || currentFinal) {
+      els.liveMonitor.innerHTML = 
+        `<span style="color:var(--text-secondary)">${filterText(currentFinal)}</span>` +
         `<span class="live-interim"> ${filterText(interim)}</span>`;
       els.liveMonitor.scrollTop = els.liveMonitor.scrollHeight;
-      els.bottomLive.innerHTML = `<span style="color:var(--accent-blue);font-style:italic;">${disp||'...'}</span>`;
+      els.bottomLive.innerHTML = `<span style="color:var(--accent-blue);font-style:italic;">${filterText(interim || currentFinal) || '...'}</span>`;
     }
-    if (finalText.trim()) {
-      const cleaned = filterText(finalText);
-      if (cleaned.length > 1) appendToEditor(cleaned);
+
+    // Logic Anti-Duplikasi untuk HP
+    if (currentFinal.trim() && currentFinal !== state.lastFinalText) {
+      const cleaned = filterText(currentFinal);
+      if (cleaned.length > 1) {
+        appendToEditor(cleaned);
+        state.lastFinalText = currentFinal; // Lock teks ini agar tidak tertulis lagi
+      }
     }
   };
 
   r.onend = () => {
     if (state.isRecording) {
+      // Jeda 500ms sebelum restart untuk mencegah bunyi "teng tong" sistem
       state.restartTimeout = setTimeout(() => {
-        if (state.isRecording && state.recognition) {
-          try { state.recognition.start(); } catch(e) {}
+        if (state.isRecording) {
+          try { r.start(); } catch(e) {}
         }
-      }, 350);
+      }, 600);
     } else {
       setIdleUI();
     }
   };
 
   r.onerror = (ev) => {
-    if (ev.error === 'no-speech') return;
-    if (ev.error === 'not-allowed') { showToast('⚠ Izin mikrofon diperlukan'); stopRecording(); return; }
-    if (state.isRecording) {
-      setTimeout(() => {
-        if (state.isRecording && state.recognition) {
-          try { state.recognition.start(); } catch(e) {}
-        }
-      }, 500);
+    if (ev.error === 'not-allowed') {
+      showToast('⚠ Izin mikrofon diperlukan');
+      stopRecording();
     }
   };
 
   return r;
 }
 
-// ── APPEND (cursor-safe) ──
 function appendToEditor(text) {
   const ta = els.editor;
   const cur = ta.selectionStart, curE = ta.selectionEnd;
   const val = ta.value;
+  
   const cap = text.charAt(0).toUpperCase() + text.slice(1);
   const toAdd = /[.?!]$/.test(cap) ? cap : cap + '.';
   const sep = val.length > 0 ? (val.endsWith('\n') ? '' : '\n') : '';
+  
   ta.value = val + sep + toAdd;
   localStorage.setItem('bp_notulensi_v3', ta.value);
   updateCounts();
+  
   const wasAtEnd = cur === val.length && curE === val.length;
   if (!wasAtEnd) ta.setSelectionRange(cur, curE);
   else ta.scrollTop = ta.scrollHeight;
 }
 
-// ── UI STATES ──
 function setRecordingUI() {
   els.micIndicator.classList.add('recording');
   els.micLabel.textContent = 'Merekam';
   els.waveform.classList.add('active');
   els.startBtn.classList.add('hidden');
   els.stopBtn.classList.remove('hidden');
-  els.liveMonitor.innerHTML = '<span class="live-placeholder">Mulai berbicara...</span>';
-  els.bottomLive.innerHTML = '<span style="color:var(--accent-red);font-style:italic;font-size:11px;">● Merekam...</span>';
 }
 
 function setIdleUI() {
@@ -817,10 +759,10 @@ function setIdleUI() {
   els.bottomLive.innerHTML = '<span style="color:var(--text-muted);font-style:italic;font-size:11px;">Suara akan muncul di sini...</span>';
 }
 
-// ── START / STOP ──
 window.startRecording = function() {
   if (!SR) { showToast('Gunakan Chrome atau Edge'); return; }
   state.isRecording = true;
+  state.lastFinalText = '';
   state.recognition = createRecognition();
   try {
     state.recognition.start();
@@ -837,14 +779,15 @@ window.startRecording = function() {
 window.stopRecording = function() {
   state.isRecording = false;
   clearTimeout(state.restartTimeout);
-  if (state.recognition) { try { state.recognition.stop(); } catch(e) {} state.recognition = null; }
+  if (state.recognition) {
+    try { state.recognition.stop(); } catch(e) {}
+  }
   setIdleUI();
   stopTimer();
   releaseWakeLock();
   showToast('Rekaman dihentikan');
 };
 
-// ── SAVE ──
 window.saveFile = function() {
   const content = els.editor.value;
   if (!content.trim()) { showToast('Tidak ada yang disimpan'); return; }
@@ -868,34 +811,24 @@ window.saveFile = function() {
   a.download = `Notulensi_BayuPermana_${dateStr}_${timeStr}.txt`;
   document.body.appendChild(a); a.click();
   document.body.removeChild(a);
-  URL.revokeObjectURL(a.href);
   showToast('✓ File berhasil disimpan');
 };
 
-// ── FILTER TOGGLE ──
 window.toggleFilter = function() {
   state.filterEnabled = !state.filterEnabled;
   els.toggleSwitch.classList.toggle('on', state.filterEnabled);
   els.filterStatus.textContent = state.filterEnabled ? 'Aktif' : 'Nonaktif';
-  els.filterStatus.style.color  = state.filterEnabled ? 'var(--accent-green)' : 'var(--text-muted)';
-  els.filterStatus.style.borderColor = state.filterEnabled ? 'rgba(74,222,128,0.28)' : 'var(--navy-border)';
-  els.filterStatus.style.background  = state.filterEnabled ? 'rgba(74,222,128,0.09)' : 'var(--navy-surface)';
   showToast(state.filterEnabled ? 'Filter diaktifkan' : 'Filter dinonaktifkan');
 };
 
-// ── CLEAR ──
 window.clearAll = function() {
-  if (!confirm('Hapus semua notulensi? Tindakan ini tidak dapat dibatalkan.')) return;
+  if (!confirm('Hapus semua notulensi?')) return;
   els.editor.value = '';
-  els.liveMonitor.innerHTML = '<span class="live-placeholder">Menunggu rekaman dimulai...</span>';
-  els.bottomLive.innerHTML = '<span style="color:var(--text-muted);font-style:italic;font-size:11px;">Suara akan muncul di sini...</span>';
   localStorage.removeItem('bp_notulensi_v3');
   updateCounts();
-  els.sessionTimer.textContent = '00:00';
   showToast('Semua data dihapus');
 };
 
-// ── TOAST ──
 function showToast(msg) {
   els.toast.textContent = msg;
   els.toast.classList.add('show');
